@@ -1,0 +1,3 @@
+name: WordFilterPlugin
+main: de.reelos.wordfilter.WordFilter
+version: 1.0
