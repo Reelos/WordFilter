@@ -1,0 +1,9 @@
+name: WordFilterPlugin
+main: de.reelos.wordfilter.WordFilter
+version: 1.0
+author: Reelos
+description: Common wordfilter Plugin.
+commands:
+  addbadword:
+    description: Add word to blacklist.
+    usage: /addbadword word groupflag
