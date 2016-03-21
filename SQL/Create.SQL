@@ -22,4 +22,8 @@ VALUES
 	("Vollpfosten",0),
 	("Shit",1),
 	("Motherfucker",1),
-	("Birdo",0);
+	("Birdo",0),
+	("Trottel",0),
+	("Wixxer",1),
+	("Lutscher",0),
+	("NeuxzKopf",0);
