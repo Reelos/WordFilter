@@ -5,7 +5,7 @@ CREATE TABLE BadWords(
 	PkID SERIAL PRIMARY KEY,
 	Added_By TEXT VARCHAR(32) DEFAULT "Console",
 	Word TEXT VARCHAR(32),							--Took 32 Bytes cause 24 are not enaugh and any byte range between them would take 32 Bytes anyway.
-	For_All BOOLEAN DEFAULT 1
+	For_All INTEGER DEFAULT 1
 );
 
 INSERT INTO BadWords								--Adding Default DATA
