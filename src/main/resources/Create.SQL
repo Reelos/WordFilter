@@ -1,14 +1,15 @@
-CREATE SCHEMA IF NOT EXISTS WordFilter; 			--Create Database for Plugin
-DROP TABLE IF EXISTS BadWords; 						--Droping Table to use sql file more then once
+CREATE SCHEMA IF NOT EXISTS WordFilter;
+USE WordFilter;
+DROP TABLE IF EXISTS BadWords; 
 
 CREATE TABLE BadWords(
 	PkID SERIAL PRIMARY KEY,
-	Added_By TEXT VARCHAR(32) DEFAULT "Console",
-	Word TEXT VARCHAR(32),							--Took 32 Bytes cause 24 are not enaugh and any byte range between them would take 32 Bytes anyway.
+	Added_By VARCHAR(32) DEFAULT "Console",
+	Word VARCHAR(32),
 	For_All INTEGER DEFAULT 1
 );
 
-INSERT INTO BadWords								--Adding Default DATA
+INSERT INTO BadWords
 	(Word,For_All)
 VALUES
 	("Fuck",1),

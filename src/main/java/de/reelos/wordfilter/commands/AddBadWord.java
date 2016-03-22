@@ -4,9 +4,9 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.java.JavaPlugin;
 
-import de.reelos.wordfilter.DAO;
+import de.reelos.wordfilter.WordFilter;
+import de.reelos.wordfilter.database.DAO;
 
 /**
  * CommandClass to add a Swear Word
@@ -14,9 +14,9 @@ import de.reelos.wordfilter.DAO;
  */
 public class AddBadWord implements CommandExecutor {
 
-	private JavaPlugin parent;
+	private WordFilter parent;
 	
-	public AddBadWord(JavaPlugin parent){
+	public AddBadWord(WordFilter parent){
 		this.parent = parent;
 	}
 		
@@ -27,8 +27,15 @@ public class AddBadWord implements CommandExecutor {
 		if (sender instanceof Player){
 			name = ((Player)sender).getName();
 		}
-		DAO.instance.AddWord(name, args[0], Boolean.valueOf(args[1]));
+		if(args.length>0){
+			if(args.length > 1)
+				ret = DAO.instance.AddWord(name, args[0], Integer.valueOf(args[1]))>0;
+			if(args.length == 1)
+				ret = DAO.instance.AddWord(name, args[0], 0)>0;
+		}
+		parent.reloadList();
 		return ret;
+		
 	}
 
 }
