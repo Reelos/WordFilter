@@ -1,5 +1,3 @@
-CREATE SCHEMA IF NOT EXISTS WordFilter;
-USE WordFilter;
 DROP TABLE IF EXISTS BadWords; 
 
 CREATE TABLE BadWords(

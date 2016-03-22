@@ -1,4 +1,4 @@
-name: WordFilterPlugin
+name: WordFilter
 main: de.reelos.wordfilter.WordFilter
 version: 1.0
 author: Reelos
@@ -7,3 +7,20 @@ commands:
   addbadword:
     description: Add word to blacklist.
     usage: /addbadword word groupflag
+    permission: wordfilter.canAdd
+    permission-message: You don't have the wordfilter.canAdd Permission
+  removebadword:
+    description: Removes word from blacklist.
+    usage: /removebadword word
+    permission: wordfilter.canRemove
+    permission-message: You don't have the wordfilter.canRemove Permission
+  getbadwords:
+    description: Lists all blacklisted word with their active Flag
+    usage: /getbadwords
+    permission: wordfilter.canList
+    permission-message: You don't have the wordfilter.canList Permission
+  changewordflag:
+    description: Changes the flag of a blacklisted word
+    usage: /changewordflag word flag
+    permission: wordfilter.canFlag
+    permission-message: You don't have the wordfilter.canFlag Permission

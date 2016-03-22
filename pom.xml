@@ -48,13 +48,13 @@
 	<dependency>
 		<groupId>ru.tehkode</groupId>
 		<artifactId>PermissionsEx</artifactId>
-		<version>1.22</version>
+		<version>1.23.1</version>
 	</dependency>
   </dependencies>
   <repositories>
 	<repository>
 		<id>pex-repo</id>
-		<url>http://pex-repo.aoeu.xyz</url>
+		<url>https://pex-repo.aoeu.xyz</url>
 	</repository>
   </repositories>
 </project>

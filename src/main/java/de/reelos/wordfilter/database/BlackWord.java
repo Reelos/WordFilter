@@ -1,5 +1,9 @@
 package de.reelos.wordfilter.database;
 
+/**
+ * Helper Class for saving data from database
+ * @author Reelos
+ */
 public class BlackWord {
 	private String playername;
 	private String word;
