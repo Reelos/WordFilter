@@ -135,7 +135,7 @@ public class DAO {
 	 */
 	private void openDB() throws SQLException {
 		closeDB();
-		con = DriverManager.getConnection(baseurl + database, "root", "");
+		con = DriverManager.getConnection(baseurl + database, username, password);
 	}
 
 	/**
