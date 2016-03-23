@@ -43,13 +43,12 @@ public class WordFilter extends JavaPlugin {
 			public void onPlayerChat(AsyncPlayerChatEvent event) {
 				String msg = event.getMessage();
 				String[] splitter = msg.split(" ");
-				PermissionUser user = PermissionsEx.getUser(event.getPlayer().getName());
 				// iterating through the words and the list, checking for
 				// WordFlag and canSwear Right
 				for (int i = 0; i < splitter.length; i++) {
 					for (BlackWord black : list) {
 						if (splitter[i].equalsIgnoreCase(black.getWord())) {
-							if (black.getFlag() > 0 || !user.has(canSwear.getName())) {
+							if (black.getFlag() > 0 || !event.getPlayer().hasPermission(canSwear.getName())) {
 								int len = splitter[i].length();
 								splitter[i] = "";
 								for (int x = 0; x < len; x++) {
@@ -59,7 +58,7 @@ public class WordFilter extends JavaPlugin {
 						}
 					}
 				}
-				//Rebuilding Message String
+				// Rebuilding Message String
 				String newmsg = "";
 				for (String s : splitter) {
 					newmsg += s + " ";
@@ -69,10 +68,12 @@ public class WordFilter extends JavaPlugin {
 
 			@EventHandler
 			public void onPlayerJoin(PlayerJoinEvent event) {
-				PermissionUser user = PermissionsEx.getUser(event.getPlayer());
-				// setting player pre- and suffix
-				event.getPlayer().setDisplayName(ChatColor.translateAlternateColorCodes('&', user.getPrefix())
-						+ user.getName() + ChatColor.translateAlternateColorCodes('&', user.getSuffix()));
+				if (getServer().getPluginManager().isPluginEnabled("PermissionsEx")) {
+					PermissionUser user = PermissionsEx.getUser(event.getPlayer());
+					// setting player pre- and suffix
+					event.getPlayer().setDisplayName(ChatColor.translateAlternateColorCodes('&', user.getPrefix())
+							+ user.getName() + ChatColor.translateAlternateColorCodes('&', user.getSuffix()));
+				}
 			}
 		}, this);
 		// Command registation as defined in plugin.yml
@@ -83,6 +84,7 @@ public class WordFilter extends JavaPlugin {
 		System.out.println("[WordFilter] Basic Vars Loaded");
 		reloadList();
 	}
+
 	/**
 	 * Reloads the BlackList using the DAO Object
 	 */
@@ -96,6 +98,7 @@ public class WordFilter extends JavaPlugin {
 	public void onDisable() {
 		System.out.println("[WordFilter] unloaded");
 	}
+
 	/**
 	 * @return List of BlackWord Objects
 	 */

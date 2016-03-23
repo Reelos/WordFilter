@@ -7,7 +7,6 @@ import org.bukkit.entity.Player;
 
 import de.reelos.wordfilter.WordFilter;
 import de.reelos.wordfilter.database.DAO;
-import ru.tehkode.permissions.bukkit.PermissionsEx;
 
 /**
  * CommandClass to add a Swear Word
@@ -29,7 +28,7 @@ public class AddBadWord implements CommandExecutor {
 		boolean canFlag = true;
 		if (sender instanceof Player) {
 			name = ((Player) sender).getName();
-			canFlag = PermissionsEx.getUser((Player) sender).has(WordFilter.canFlag.getName());
+			canFlag = ((Player) sender).hasPermission(WordFilter.canFlag.getName());
 		}
 		if (args.length > 0) {
 			if (args.length > 1 && canFlag)
