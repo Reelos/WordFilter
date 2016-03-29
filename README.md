@@ -14,10 +14,10 @@ In this file, you can set the MySQL Connetion configuration.
 The File is Named WordFilter.ini
 The Basic Configuration for the MySQL Server Connection is
 
-	Server: localhost:3306 
-	Username: root
-	Password: <none>
-	Database: WordFilter
+	Server=localhost:3306 
+	Username=root
+	Password=
+	Database=WordFilter
 
 After this, the plugin will automaticly create the given Schema,
 create a table named "BadWords" and fill it with some basic Words.
